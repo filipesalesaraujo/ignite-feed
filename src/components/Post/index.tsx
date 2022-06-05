@@ -1,40 +1,31 @@
 import { Avatar } from "../Avatar";
 import { Comment } from "../Comment";
+import { Props } from "./index.interfaces";
+
 import styles from "./index.module.css";
 
-export function Post() {
+export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
+  const renderedPublishedAt = publishedAt.toString();
+
   return (
     <article className={styles.post}>
       <header className={styles.header}>
         <div className={styles.author}>
-          <Avatar src="https://github.com/filipesalesaraujo.png" />
+          <Avatar src={avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong className={styles.name}>Filipe Sales</strong>
-            <span className={styles.office}>Web Developer</span>
+            <strong className={styles.name}>{name}</strong>
+            <span className={styles.role}>{role}</span>
           </div>
         </div>
         <time
           className={styles.time}
           title="11 de Maio às 08h13"
-          dateTime="2022-05-11 08:13:30"
+          dateTime={renderedPublishedAt}
         >
-          Publicado há 1h
+          {renderedPublishedAt}
         </time>
       </header>
-      <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-        </p>
-        <p>
-          👉 <a href="">jane.design/doctorcare</a>
-        </p>
-        <p>
-          <a href="">#novoprojeto</a> <a href="">#nlw</a>{" "}
-          <a href="">#rocketseat</a>
-        </p>
-      </div>
+      <div className={styles.content}>{content}</div>
       <form className={styles.commentForm}>
         <strong className={styles.commentFormTitle}>Deixe seu feedback</strong>
         <textarea

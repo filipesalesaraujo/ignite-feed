@@ -13,7 +13,7 @@ export function Sidebar() {
       <div className={styles.profile}>
         <Avatar src="https://github.com/filipesalesaraujo.png" />
         <strong className={styles.name}>Filipe Sales</strong>
-        <span className={styles.office}>Werb Developer</span>
+        <span className={styles.role}>Werb Developer</span>
         <footer className={styles.footer}>
           <a className={styles.editProfile} href="#">
             <PencilLine size={20} />

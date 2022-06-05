@@ -4,6 +4,8 @@ import { Post } from "./components/Post";
 import { Wrapper } from "./components/Wrapper";
 import { Posts } from "./components/Posts";
 
+import { posts } from "./utils/posts";
+
 export function App() {
   return (
     <>
@@ -11,8 +13,18 @@ export function App() {
       <Wrapper>
         <Sidebar />
         <Posts>
-          <Post />
-          <Post />
+          {posts.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                avatarUrl={post.author.avatarUrl}
+                name={post.author.name}
+                role={post.author.role}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </Posts>
       </Wrapper>
     </>
