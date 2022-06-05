@@ -9,6 +9,7 @@ import { Props } from "./index.interfaces";
 import styles from "./index.module.css";
 
 export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
+  // Date
   const publishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' H:mm'h'",
@@ -20,12 +21,18 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
     addSuffix: true,
   });
 
-  const [comments, setComments] = useState([1, 2]);
+  // Comment
+  const [comments, setComments] = useState(["Saveiro pega no breu"]);
+  const [newCommentText, setNewCommentText] = useState();
 
   function handleCreateNewComment() {
-    event.preventDefault();
+    event?.preventDefault();
+    setComments([...comments, newCommentText]);
+    setNewCommentText('');
+  }
 
-    setComments([...comments, comments.length + 1]);
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value);
   }
 
   return (
@@ -50,8 +57,11 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong className={styles.commentFormTitle}>Deixe seu feedback</strong>
         <textarea
+          name="comment"
           className={styles.commentFormTextArea}
           placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
         />
         <footer className={styles.footer}>
           <button className={styles.commentFormButton} type="submit">
@@ -62,7 +72,7 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment />;
+          return <Comment content={comment} />;
         })}
       </div>
     </article>
