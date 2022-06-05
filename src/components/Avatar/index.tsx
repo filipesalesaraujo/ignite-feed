@@ -1,6 +1,6 @@
-import { Props } from "./index.interfaces";
-
 import styles from "./index.module.css";
+
+import { Props } from "./index.interfaces";
 
 export function Avatar({ src, hasBorder = true }: Props) {
   return (
