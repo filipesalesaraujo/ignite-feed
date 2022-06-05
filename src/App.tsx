@@ -1,6 +1,6 @@
 import { Header } from "./components/Header";
-import { Main } from "./components/Main";
 import { Sidebar } from "./components/Sidebar";
+import { Post } from "./components/Post";
 import { Wrapper } from "./components/Wrapper";
 
 export function App() {
@@ -9,7 +9,7 @@ export function App() {
       <Header />
       <Wrapper>
         <Sidebar />
-        <Main />
+        <Post />
       </Wrapper>
     </>
   );
