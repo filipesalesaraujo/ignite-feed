@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { Post } from "./components/Post";
 import { Wrapper } from "./components/Wrapper";
+import { Posts } from "./components/Posts";
 
 export function App() {
   return (
@@ -9,7 +10,10 @@ export function App() {
       <Header />
       <Wrapper>
         <Sidebar />
-        <Post />
+        <Posts>
+          <Post />
+          <Post />
+        </Posts>
       </Wrapper>
     </>
   );

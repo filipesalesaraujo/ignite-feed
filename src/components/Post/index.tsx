@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 export function Post() {
   return (
     <article className={styles.post}>
-      <header>
+      <header className={styles.header}>
         <div className={styles.author}>
           <img
             className={styles.avatar}
@@ -15,7 +15,7 @@ export function Post() {
             <span className={styles.office}>Web Developer</span>
           </div>
         </div>
-        <time title="11 de Maio às 08h13" dateTime="2022-05-11 08:13:30">
+        <time className={styles.time} title="11 de Maio às 08h13" dateTime="2022-05-11 08:13:30">
           Publicado há 1h
         </time>
       </header>
@@ -28,11 +28,12 @@ export function Post() {
         </p>
 
         <p>
-          👉 <a href="">jane.design/doctorcare</a>
+          👉{" "}<a href="">jane.design/doctorcare</a>
         </p>
 
         <p>
-          <a href="">#novoprojeto</a> <a href="">#nlw</a>{" "}
+          <a href="">#novoprojeto</a>{" "}
+          <a href="">#nlw</a>{" "}
           <a href="">#rocketseat</a>
         </p>
       </div>

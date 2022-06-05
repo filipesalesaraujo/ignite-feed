@@ -1,4 +1,4 @@
-import { Props } from "./index.types";
+import { Props } from "./index.interfaces";
 
 import styles from "./index.module.css";
 
