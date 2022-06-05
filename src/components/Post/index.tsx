@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 
@@ -19,6 +20,14 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
     addSuffix: true,
   });
 
+  const [comments, setComments] = useState([1, 2]);
+
+  function handleCreateNewComment() {
+    event.preventDefault();
+
+    setComments([...comments, comments.length + 1]);
+  }
+
   return (
     <article className={styles.post}>
       <header className={styles.header}>
@@ -38,7 +47,7 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
         </time>
       </header>
       <div className={styles.content}>{content}</div>
-      <form className={styles.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong className={styles.commentFormTitle}>Deixe seu feedback</strong>
         <textarea
           className={styles.commentFormTextArea}
@@ -52,9 +61,9 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map((comment) => {
+          return <Comment />;
+        })}
       </div>
     </article>
   );
