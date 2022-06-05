@@ -1,3 +1,4 @@
+import { PencilLine } from "phosphor-react";
 import styles from "./index.module.css";
 
 export function Sidebar() {
@@ -9,10 +10,18 @@ export function Sidebar() {
         alt="Capa de perfil"
       />
       <div className={styles.profile}>
-        <strong>Filipe Sales</strong>
-        <span>Werb Developer</span>
+        <img
+          className={styles.avatar}
+          src="https://github.com/filipesalesaraujo.png"
+          alt="Foto de perfil"
+        />
+        <strong className={styles.name}>Filipe Sales</strong>
+        <span className={styles.office}>Werb Developer</span>
         <footer className={styles.footer}>
-          <a className={styles.editProfile} href="#">Editar seu perfil</a>
+          <a className={styles.editProfile} href="#">
+            <PencilLine size={20} />
+            Editar seu perfil
+          </a>
         </footer>
       </div>
     </aside>
