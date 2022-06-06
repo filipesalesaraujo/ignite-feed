@@ -24,6 +24,7 @@ export function Comment({ content, onDeleteComment }: Props) {
       <Avatar
         hasBorder={false}
         src="https://github.com/filipesalesaraujo.png"
+        alt="Foto de perfil"
       />
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>

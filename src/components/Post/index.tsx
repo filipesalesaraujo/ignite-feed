@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { v4 as uuidv4 } from "uuid";
@@ -9,7 +9,7 @@ import { Props } from "./index.interfaces";
 
 import styles from "./index.module.css";
 
-export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
+export function Post({ author, content, publishedAt }: Props) {
   // Date
   const publishedDateFormatted = format(
     publishedAt,
@@ -26,27 +26,27 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
   const [comments, setComments] = useState(["Saveiro pega no breu"]);
   const [newCommentText, setNewCommentText] = useState("");
 
-  function handleCreateNewComment(event: any) {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault();
     setComments([...comments, newCommentText]);
     setNewCommentText("");
   }
 
-  function handleNewCommentChange(event: any) {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
   }
 
-  function deleteComment(commentToDelete: any) {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity("Esse campo é obrigatório");
+  }
+
+  function deleteComment(commentToDelete: string) {
     const commentsWithoutDeletedOne = comments.filter((comment) => {
       return comment !== commentToDelete;
     });
 
     setComments(commentsWithoutDeletedOne);
-  }
-
-  function handleNewCommentInvalid(event: any) {
-    event.target.setCustomValidity("Esse campo é obrigatório");
   }
 
   const isNewCommentEmpty = newCommentText.length === 0;
@@ -55,10 +55,10 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
     <article className={styles.post}>
       <header className={styles.header}>
         <div className={styles.author}>
-          <Avatar src={avatarUrl} />
+          <Avatar src={author.avatarUrl} alt="Foto de perfil" />
           <div className={styles.authorInfo}>
-            <strong className={styles.name}>{name}</strong>
-            <span className={styles.role}>{role}</span>
+            <strong className={styles.name}>{author.name}</strong>
+            <span className={styles.role}>{author.role}</span>
           </div>
         </div>
         <time

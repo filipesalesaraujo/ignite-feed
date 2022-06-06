@@ -19,6 +19,7 @@ export function App() {
             return (
               <Post
                 key={uuidv4()}
+                author={post.author}
                 avatarUrl={post.author.avatarUrl}
                 name={post.author.name}
                 role={post.author.role}

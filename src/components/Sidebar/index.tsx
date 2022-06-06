@@ -11,7 +11,10 @@ export function Sidebar() {
         alt="Capa de perfil"
       />
       <div className={styles.profile}>
-        <Avatar src="https://github.com/filipesalesaraujo.png" />
+        <Avatar
+          src="https://github.com/filipesalesaraujo.png"
+          alt="Foto de perfil"
+        />
         <strong className={styles.name}>Filipe Sales</strong>
         <span className={styles.role}>Werb Developer</span>
         <footer className={styles.footer}>

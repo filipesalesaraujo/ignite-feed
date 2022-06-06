@@ -1,4 +1,4 @@
 export interface Props {
   content: string;
-  onDeleteComment: any;
+  onDeleteComment: (comment: string) => void;
 }
