@@ -36,7 +36,7 @@ export function Comment({ content, onDeleteComment }: Props) {
                 title="11 de Maio às 08h13"
                 dateTime="2022-05-11 08:13:30"
               >
-                Cercade 1h atrás
+                Cerca de 1h atrás
               </time>
             </div>
             <button
