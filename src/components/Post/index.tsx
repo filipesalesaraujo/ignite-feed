@@ -24,21 +24,26 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
 
   // Comment
   const [comments, setComments] = useState(["Saveiro pega no breu"]);
-  const [newCommentText, setNewCommentText] = useState();
+  const [newCommentText, setNewCommentText] = useState("");
 
-  function handleCreateNewComment() {
-    event?.preventDefault();
+  function handleCreateNewComment(event: any) {
+    event.preventDefault();
     setComments([...comments, newCommentText]);
     setNewCommentText("");
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: any) {
     setNewCommentText(event.target.value);
   }
 
-  function deleteComment(comment) {
-    console.log(`deletar comentario ${comment}`);
+  function deleteComment(commentToDelete: any) {
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDelete;
+    });
+
+    setComments(commentsWithoutDeletedOne);
   }
+
   return (
     <article className={styles.post}>
       <header className={styles.header}>
