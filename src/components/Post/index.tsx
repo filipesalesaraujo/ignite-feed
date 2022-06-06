@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
+import { v4 as uuidv4 } from "uuid";
 
 import { Avatar } from "../Avatar";
 import { Comment } from "../Comment";
@@ -28,7 +29,7 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
   function handleCreateNewComment() {
     event?.preventDefault();
     setComments([...comments, newCommentText]);
-    setNewCommentText('');
+    setNewCommentText("");
   }
 
   function handleNewCommentChange() {
@@ -72,7 +73,7 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment content={comment} />;
+          return <Comment key={uuidv4()} content={comment} />;
         })}
       </div>
     </article>

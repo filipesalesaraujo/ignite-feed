@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { Post } from "./components/Post";
@@ -11,12 +13,12 @@ export function App() {
     <>
       <Header />
       <Wrapper>
-        <Sidebar />
+        <Sidebar /> 
         <Posts>
           {posts.map((post) => {
             return (
               <Post
-                key={post.id}
+                key={uuidv4()}
                 avatarUrl={post.author.avatarUrl}
                 name={post.author.name}
                 role={post.author.role}
