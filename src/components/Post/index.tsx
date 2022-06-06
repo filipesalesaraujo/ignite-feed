@@ -36,6 +36,9 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
     setNewCommentText(event.target.value);
   }
 
+  function deleteComment(comment) {
+    console.log(`deletar comentario ${comment}`);
+  }
   return (
     <article className={styles.post}>
       <header className={styles.header}>
@@ -73,7 +76,13 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={uuidv4()} content={comment} />;
+          return (
+            <Comment
+              key={uuidv4()}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          );
         })}
       </div>
     </article>

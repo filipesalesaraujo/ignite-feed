@@ -5,7 +5,11 @@ import styles from "./index.module.css";
 
 import { Props } from "./index.interfaces";
 
-export function Comment({ content }: Props) {
+export function Comment({ content, onDeleteComment }: Props) {
+  function handleDeleteComment() {
+    onDeleteComment(content);
+  }
+
   return (
     <div className={styles.comment}>
       <Avatar
@@ -25,7 +29,11 @@ export function Comment({ content }: Props) {
                 Cercade 1h atrás
               </time>
             </div>
-            <button className={styles.delete} title="Deletar comentário">
+            <button
+              onClick={handleDeleteComment}
+              className={styles.delete}
+              title="Deletar comentário"
+            >
               <Trash size={24} />
             </button>
           </header>
