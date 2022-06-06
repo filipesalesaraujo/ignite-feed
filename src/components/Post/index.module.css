@@ -112,8 +112,12 @@
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
 }
+.commentFormButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
-.commentFormButton:hover {
+.commentFormButton:not(:disabled):hover {
   background: var(--green-300);
 }
 

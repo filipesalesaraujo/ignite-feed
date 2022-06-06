@@ -33,6 +33,7 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
   }
 
   function handleNewCommentChange(event: any) {
+    event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
   }
 
@@ -43,6 +44,12 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
 
     setComments(commentsWithoutDeletedOne);
   }
+
+  function handleNewCommentInvalid(event: any) {
+    event.target.setCustomValidity("Esse campo é obrigatório");
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   return (
     <article className={styles.post}>
@@ -71,9 +78,15 @@ export function Post({ avatarUrl, name, role, content, publishedAt }: Props) {
           placeholder="Deixe um comentário"
           value={newCommentText}
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
         />
         <footer className={styles.footer}>
-          <button className={styles.commentFormButton} type="submit">
+          <button
+            className={styles.commentFormButton}
+            type="submit"
+            disabled={isNewCommentEmpty}
+          >
             Publicar
           </button>
         </footer>
