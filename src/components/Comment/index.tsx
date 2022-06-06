@@ -14,7 +14,9 @@ export function Comment({ content, onDeleteComment }: Props) {
   }
 
   function handleLikeComment() {
-    setLikeCount(likeCount + 1);
+    setLikeCount((state) => {
+      return state + 1;
+    });
   }
 
   return (
