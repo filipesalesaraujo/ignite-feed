@@ -4,10 +4,17 @@ import { Avatar } from "../Avatar";
 import styles from "./index.module.css";
 
 import { Props } from "./index.interfaces";
+import { useState } from "react";
 
 export function Comment({ content, onDeleteComment }: Props) {
+  const [likeCount, setLikeCount] = useState(0);
+
   function handleDeleteComment() {
     onDeleteComment(content);
+  }
+
+  function handleLikeComment() {
+    setLikeCount(likeCount + 1);
   }
 
   return (
@@ -40,9 +47,9 @@ export function Comment({ content, onDeleteComment }: Props) {
           <p className={styles.commentText}>{content}</p>
         </div>
         <footer className={styles.footer}>
-          <button className={styles.applaud}>
+          <button className={styles.applaud} onClick={handleLikeComment}>
             <ThumbsUp />
-            Aplaudir <span className={styles.applaudCounter}>20</span>
+            Aplaudir <span className={styles.applaudCounter}>{likeCount}</span>
           </button>
         </footer>
       </div>
